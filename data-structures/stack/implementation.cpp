@@ -6,12 +6,22 @@ class Stack
 public:
     void push(int x)
     {
+        if (top == size - 1)
+        {
+            printf("Error: Stack Overflow");
+            return;
+        }
         stack[++top] = x;
         return;
     };
 
     int pop()
     {
+        if (top == -1)
+        {
+            printf("Error: Stack empty");
+            return -1;
+        }
         return stack[top--];
     };
 
