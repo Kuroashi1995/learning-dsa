@@ -44,3 +44,17 @@ void insertNode(int value, int position)
     ref->next = inserted;
     return;
 };
+
+void deleteNode(int position)
+{
+    Node *next = NULL;
+    Node *prev = head;
+
+    for (int i = 0; i < position - 2; i++)
+    {
+        prev = prev->next;
+    }
+    next = prev->next->next;
+    prev->next = next;
+    return;
+};
