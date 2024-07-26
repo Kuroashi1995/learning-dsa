@@ -10,7 +10,7 @@ private:
 public:
     void enque(int value)
     {
-        if (rear == size - 1)
+        if (rear - front == size - 1)
         {
             printf("Error: Queue is full");
             return;
@@ -19,7 +19,7 @@ public:
         {
             front++;
         }
-        queue[++rear] = value;
+        queue[++rear % size] = value;
         return;
     };
     int deque()
@@ -29,7 +29,7 @@ public:
             printf("Error: Queue is empty");
             return -1;
         }
-        return queue[front++];
+        return queue[front++ % size];
     };
     int isEmpty()
     {
@@ -44,7 +44,7 @@ public:
     {
         for (int i = front; i <= rear; i++)
         {
-            printf("%d", queue[i]);
+            printf("%d", queue[i % size]);
         }
         printf("\n");
     }
