@@ -52,7 +52,7 @@ public:
 
 int main()
 {
-    Queue *queue = new Queue(10);
+    Queue *queue = new Queue(4);
     printf("Is the queue empty?: %d\n", queue->isEmpty());
     queue->enque(1);
     queue->printQueue();
@@ -66,6 +66,8 @@ int main()
     printf("Element out of the queue!: %d\n", queue->deque());
     printf("Element out of the queue!: %d\n", queue->deque());
     queue->enque(5);
+    queue->printQueue();
+    queue->enque(6);
     queue->printQueue();
     delete (queue);
 }
