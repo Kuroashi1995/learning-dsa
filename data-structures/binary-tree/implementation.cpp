@@ -32,8 +32,14 @@ public:
 		}
 		checkValue(data, root, 1);
 	};
-	void deleteValue();
-
+	//void deleteValue();
+	int findMax() {
+	return findMaxRecursive(root);
+	}
+	int findMin() {
+	return findMinRecursive(root);
+	}
+	
 private:
 	Node *root;
 	Node *checkValue(int valToCheck, Node *currentNode, int mode)
@@ -86,16 +92,37 @@ private:
 			}
 		}
 	};
+	int findMaxRecursive(Node *currentNode) {
+		if (currentNode->right == NULL) {
+			return currentNode->data;
+		}
+		else {
+			return findMaxRecursive(currentNode->right);
+		}
+	}
+	int findMinRecursive(Node *currentNode) {
+		if (currentNode->left == NULL) {
+			return currentNode->data;
+		}
+		else {
+			return findMinRecursive(currentNode->left);
+		}
+	}
 };
 
 int main()
 {
+	printf("running Binary Tree Implementation \n");
 	BinaryTree *newTree = new BinaryTree();
-	newTree->addValue(1);
-	newTree->addValue(2);
+	newTree->addValue(10);
+	newTree->addValue(12);
 	newTree->addValue(3);
-	newTree->addValue(4);
-	newTree->addValue(4);
+	newTree->addValue(44);
+	newTree->addValue(49);
+	newTree->addValue(42);
 	Node *searchResult = newTree->search(3);
-	printf("If a value was found it should show a 3 here -> %d", searchResult->data);
+	printf("If a value was found it should show a 3 here -> %d\n", searchResult->data);
+	int max = newTree->findMax();
+	int min = newTree->findMin();	
+	printf("Max: %d, Min: %d\n", max, min);
 }
