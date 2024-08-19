@@ -43,7 +43,7 @@ public:
 	}
 	int findHeight() {
 		return findHeightRecursive(root);
-}
+	}
 
 private:
 	Node *root;
@@ -113,6 +113,25 @@ private:
 			return findMinRecursive(currentNode->left);
 		}
 	}
+	int findHeightRecursive(Node *currentNode) {
+		int heightLeft, heightRight;
+		if (currentNode->left == NULL && currentNode->right == NULL) {
+			return 0;
+		}
+		if (currentNode->left != NULL){
+			heightLeft = findHeightRecursive(currentNode->left);
+		}
+		else {
+			heightLeft = -1;
+		}
+		if (currentNode->right != NULL){
+			heightRight = findHeightRecursive(currentNode->right);
+		}
+		else {
+			heightRight= -1;
+		}
+		return (heightLeft > heightRight ? heightLeft : heightRight) + 1;
+	}
 };
 
 int main()
@@ -130,4 +149,7 @@ int main()
 	int max = newTree->findMax();
 	int min = newTree->findMin();	
 	printf("Max: %d, Min: %d\n", max, min);
+	newTree->addValue(55);
+	int height = newTree->findHeight();
+	printf("The height of the tree is %d\n", height);
 }
