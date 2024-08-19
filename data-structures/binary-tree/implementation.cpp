@@ -30,16 +30,21 @@ public:
 			root->left = NULL;
 			root->right = NULL;
 		}
-		checkValue(data, root, 1);
+		else {
+			checkValue(data, root, 1);
+		}
 	};
 	//void deleteValue();
 	int findMax() {
-	return findMaxRecursive(root);
+		return findMaxRecursive(root);
 	}
 	int findMin() {
-	return findMinRecursive(root);
+		return findMinRecursive(root);
 	}
-	
+	int findHeight() {
+		return findHeightRecursive(root);
+}
+
 private:
 	Node *root;
 	Node *checkValue(int valToCheck, Node *currentNode, int mode)
